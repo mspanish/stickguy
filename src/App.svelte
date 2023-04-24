@@ -4,6 +4,7 @@
   import { parse } from './parse_svg.js';
  //import stickguy from './assets/stickguy.svg';
   import { fabric } from 'fabric';
+  import { addCustomControls } from './custom_controls.js'
  
  
  console.clear();
@@ -95,13 +96,16 @@
   onMount(() => {
 
  canvas = new fabric.Canvas('canvas');
+ fabric.Object.prototype.cornerSize = 24;
  canvas.preserveObjectStacking = true;
+
  let groups = {}
 fabric.loadSVGFromURL('/stickguy.svg', (objects) => {
 
   for (let g of stickguy_groups) {
     groups[g] = new fabric.Group()
     groups[g].id = 'group_'+g;
+    groups[g].cornerSize = 24;
 
   }
 
@@ -192,7 +196,8 @@ fabric.loadSVGFromURL('/stickguy.svg', (objects) => {
       canvas.add(groups[g])
     }
   canvas.renderAll();
-});
+ // selectMyObjects(['group_mouth', 'group_eyes', 'group_head'])
+}); // end load SVG
 
 // Event handler for selection:created
 let updateSelection = () => {
@@ -202,36 +207,34 @@ let upperLeftArmInSelection = false;
 let upperRightArmInSelection = false;
 
 
-console.log(activeSelection._objects)
+   //console.log(activeSelection._objects)
   for (let obj of activeSelection._objects) {
-    console.log(obj)
+    //console.log(obj.id)
     if (obj.id === 'head_1') headInSelection = true;
     if (obj.id.includes('upper_arm_left') ) upperLeftArmInSelection = true;  
     if (obj.id.includes('upper_arm_right') ) upperRightArmInSelection = true;      
   }
   if (headInSelection) {
-   // console.log('head is in selection')
-    // Add eyes and mouth objects to the current selection
-    activeSelection.add(groups['eyes']);
-    activeSelection.add(groups['mouth']);
+      selectMyObjects(['group_mouth', 'group_eyes', 'group_head']);
   }
     if (upperLeftArmInSelection) {
-    activeSelection.add(groups['lower_left_arm']);
+      selectMyObjects(['group_upper_left_arm', 'group_lower_left_arm']);
   }
     if (upperRightArmInSelection) {
-    activeSelection.add(groups['lower_right_arm']);
+      selectMyObjects(['group_upper_right_arm', 'group_lower_right_arm']);
   }  
 };
 
-//canvas.on('selection:created', updateSelection);
-//canvas.on('selection:updated', updateSelection);
+canvas.on('selection:created', updateSelection);
+canvas.on('selection:updated', updateSelection);
 
 // Extend the fabric.ActiveSelection class
 const CustomActiveSelection = fabric.util.createClass(fabric.ActiveSelection, {
 
   initialize: function (objects, options) {
     options = options || {};
-  console.log('custom active selection')
+    console.log('custom active selection')
+    console.log(objects)
     // Check if the desired objects are selected
     const lowerLeftArmInSelection = objects.some((object) => object.id === 'group_lower_left_arm');
     const upperLeftArmInSelection = objects.some((object) => object.id === 'group_upper_left_arm');
@@ -241,6 +244,7 @@ const CustomActiveSelection = fabric.util.createClass(fabric.ActiveSelection, {
           console.log('lowerLeftArm '+lowerLeftArmInSelection)
       options.originX = options.originX || 'right';
       options.originY = options.originY || 'center';
+      options.cornerSize = 24;
       options.centeredRotation = false;
     }
 
@@ -253,6 +257,7 @@ const CustomActiveSelection = fabric.util.createClass(fabric.ActiveSelection, {
       options.originX = options.originX || 'left';
       options.originY = options.originY || 'center';
       options.centeredRotation = false;
+      options.cornerSize = 24;
     }
 
     this.callSuper('initialize', objects, options);
@@ -262,10 +267,50 @@ const CustomActiveSelection = fabric.util.createClass(fabric.ActiveSelection, {
 // Replace the default ActiveSelection class with the custom one
 fabric.ActiveSelection = CustomActiveSelection;
 
-// ... Your other canvas setup and event handling code ...
+addCustomControls(fabric, canvas);
 
 
   }); // end onMount
+
+let selectMyObjects = (ids)=> {
+    // Programmatically select the head, eyes, and mouth objects
+    let allObjects = canvas.getObjects()
+    let arr = []
+    for (let id of ids) {
+        let element = canvas.getObjects().find((obj) => obj.id === id);
+
+      if (id === 'group_upper_left_arm' || id === 'group_lower_left_arm') {
+        console.log('selectObj, got left arm')
+        element.set({
+          originX: 'right',
+          originY: 'center',
+          cornerSize: 24,
+          centeredRotation: false,
+        });
+      } else if (id === 'group_upper_right_arm' || id === 'group_lower_right_arm') {
+        element.set({
+          originX: 'left',
+          originY: 'center',
+          cornerSize: 24,
+          centeredRotation: false,
+        });
+      }
+
+      element.set({
+          cornerSize: 24,
+      })
+      
+      if (element) arr.push(element);
+    }
+    if (arr.length < 1) return
+
+    let activeSelection = new fabric.ActiveSelection(arr, {
+      canvas: canvas,
+    });
+     // console.log(activeSelection)
+      canvas.setActiveObject(activeSelection);
+      canvas.requestRenderAll();
+}
 
 
 </script>
