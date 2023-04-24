@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Add XML Data -->
+
+<svg
+   width="118.97681"
+   height="96.63781"
+   viewBox="0 0 118.97681 96.63781"
+   fill="none"
+   version="1.1"
+   id="svg93"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs97" />
+  <g
+     id="layer4"
+     transform="translate(-757.0216,-138.2796)">
+    <g
+       id="mouth_round"
+       display="inline"
+       transform="translate(343.5,-84)">
+      <g
+         id="g5695">
+        <path
+           id="path5788"
+           d="m 473.011,315.629 c 31.039,0 56.2,-20.161 56.199,-45.03 -0.001,-24.87 -25.164,-45.031 -56.202,-45.031 -31.038,0 -56.199,20.161 -56.198,45.031 0,24.869 25.163,45.03 56.201,45.03 z"
+           fill="#000000"
+           stroke="#000000"
+           stroke-width="6.57681" />
+      </g>
+      <g
+         id="g5707">
+        <path
+           id="path5722"
+           d="m 432.415,298.6 c 38.703,21.98 62.144,16.94 87.193,-3.808 -28.216,-11.676 -64.465,-10.878 -87.193,3.808 z"
+           fill="#800000" />
+      </g>
+    </g>
+  </g>
+</svg>

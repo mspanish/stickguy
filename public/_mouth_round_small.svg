@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Add XML Data -->
+
+<svg
+   width="59.04969"
+   height="53.449692"
+   viewBox="0 0 59.04969 53.449692"
+   fill="none"
+   version="1.1"
+   id="svg93"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs97" />
+  <g
+     id="layer3"
+     transform="translate(-785.72415,-278.39715)">
+    <g
+       id="mouth_round_small"
+       display="inline"
+       transform="translate(343.5,34.5)">
+      <g
+         id="g8171">
+        <path
+           id="ellipse8169"
+           d="m 471.749,295.622 c 15.354,0 27.8,-11.193 27.8,-25 0,-13.807 -12.446,-25 -27.8,-25 -15.353,0 -27.8,11.193 -27.8,25 0,13.807 12.447,25 27.8,25 z"
+           fill="#000000"
+           stroke="#000000"
+           stroke-width="3.44969" />
+      </g>
+    </g>
+  </g>
+</svg>

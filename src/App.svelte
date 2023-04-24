@@ -26,14 +26,14 @@
    "lower_left_arm":[
       "lower_arm_left_1",
       "lower_arm_left_2_pinky",
-      "left_3rd_shadow_left",
-      "left_3rd_left",
-      "left_2nd_shadow_left",
-      "left_2nd_left",
-      "left_pointer_shadow_left",
-      "left_pointer_left",
-      "left_thumb_shadow_left",
-      "left_thumb_left"
+      "left_3rd_shadow",
+      "left_3rd",
+      "left_2nd_shadow",
+      "left_2nd",
+      "left_pointer_shadow",
+      "left_pointer",
+      "left_thumb_shadow",
+      "left_thumb"
    ],
    "upper_right_arm":[
       "upper_arm_right_1",
@@ -43,14 +43,14 @@
    "lower_right_arm":[
       "lower_arm_right_1",
       "lower_arm_right_2_pinky",
-      "right_3rd_shadow_right",
-      "right_3rd_right",
-      "right_2nd_shadow_right",
-      "right_2nd_right",
-      "right_pointer_shadow_right",
-      "right_pointer_right",
-      "right_thumb_shadow_right",
-      "right_thumb_right"
+      "right_3rd_shadow",
+      "right_3rd",
+      "right_2nd_shadow",
+      "right_2nd",
+      "right_pointer_shadow",
+      "right_pointer",
+      "right_thumb_shadow",
+      "right_thumb"
    ],
    "left_leg":[
       "leg_left_1",
@@ -71,20 +71,7 @@
       "mouth_smaller_3",
       "mouth_teeth_smaller_1",
       "mouth_teeth_smaller_2",
-      "mouth_tongue_smaller_1",
-      "mouth_half_closed_1",
-      "mouth_half_closed_2",
-      "mouth_half_closed_3",
-      "mouth_half_closed_4",
-      "mouth_round_1",
-      "mouth_round_2",
-      "mouth_round_small_1",
-      "mouth_big_1",
-      "mouth_big_2",
-      "mouth_big_3",
-      "mouth_big_4",
-      "mouth_big_5",
-      "mouth_frown_slight_1"     
+      "mouth_tongue_smaller_1", 
    ],
    "head":[
       "head_1",
@@ -96,7 +83,7 @@
   onMount(() => {
 
  canvas = new fabric.Canvas('canvas');
- fabric.Object.prototype.cornerSize = 20;
+ fabric.Object.prototype.cornerSize = 18;
  canvas.preserveObjectStacking = true;
 
  let groups = {}
@@ -119,21 +106,21 @@ fabric.loadSVGFromURL('/stickguy.svg', (objects) => {
 
   groups['head'].set({
     left: canvas.width / 2,
-    top: 40 + groups['head'].height, 
+    top: 60 + groups['head'].height, 
     originX: 'center',
     originY: 'bottom',
     centeredRotation: false  
   });
   groups['eyes'].set({
     left: canvas.width / 2,
-    top: groups['head'].height/3, 
+    top: groups['head'].height/2, 
     originX: 'center',
     originY: 'center',
     centeredRotation: false  
   });  
   groups['mouth'].set({
     left: canvas.width / 2,
-    top: groups['head'].height * .75, 
+    top: groups['head'].height * .85, 
     originX: 'center',
     originY: 'center',
     centeredRotation: false  
@@ -201,6 +188,7 @@ fabric.loadSVGFromURL('/stickguy.svg', (objects) => {
 
 // Event handler for selection:created
 let updateSelection = () => {
+  console.log('running update selection')
  const activeSelection = canvas.getActiveObject();
 let headInSelection = false;
 let upperLeftArmInSelection = false;
@@ -278,25 +266,27 @@ let selectMyObjects = (ids)=> {
     let arr = []
     for (let id of ids) {
         let element = canvas.getObjects().find((obj) => obj.id === id);
+        
+        if (!element) continue
 
-      if (id === 'group_upper_left_arm' || id === 'group_lower_left_arm') {
-        console.log('selectObj, got left arm')
-        element.set({
-          originX: 'right',
-          originY: 'center',
- 
-          centeredRotation: false,
-        });
-      } else if (id === 'group_upper_right_arm' || id === 'group_lower_right_arm') {
-        element.set({
-          originX: 'left',
-          originY: 'center',
-       
-          centeredRotation: false,
-        });
-      }
+        if (id === 'group_upper_left_arm' || id === 'group_lower_left_arm') {
+          console.log('selectObj, got left arm')
+          element.set({
+            originX: 'right',
+            originY: 'center',
+  
+            centeredRotation: false,
+          });
+        } else if (id === 'group_upper_right_arm' || id === 'group_lower_right_arm') {
+          element.set({
+            originX: 'left',
+            originY: 'center',
+        
+            centeredRotation: false,
+          });
+        }
 
-      
+        
       if (element) arr.push(element);
     }
     if (arr.length < 1) return
@@ -308,16 +298,134 @@ let selectMyObjects = (ids)=> {
       canvas.setActiveObject(activeSelection);
       canvas.requestRenderAll();
 }
+let emojiHead = () => {
 
+  fabric.loadSVGFromURL('/cold.svg', function(objects) {
+    console.log(objects)
+    // Find the mouth group
+    let num = 0;
 
+  
+    var headGroup = canvas.getObjects().find(function(object) {
+      return object.id === "group_head";
+    });
+     var mouthGroup = canvas.getObjects().find(function(object) {
+      return object.id === "group_mouth";
+    }); 
+      var eyesGroup = canvas.getObjects().find(function(object) {
+      return object.id === "group_eyes";
+    });
+
+    let h = headGroup.height; 
+    let top = headGroup.top;
+    headGroup.forEachObject(function(obj) {
+      headGroup.remove(obj);
+    });
+
+    var svgGroup = new fabric.Group(objects, {
+      left: 0,
+      top: headGroup.height/2,
+        originX: 'center',
+        originY: 'bottom',
+        centeredRotation: false,
+          perPixelTargetFind: true,
+          id: 'import_head'
+      });
+
+      // Scale the group to the desired size
+      svgGroup.scaleToWidth(375);
+      svgGroup.scaleToHeight(375);
+      
+      headGroup.add(svgGroup)
+
+      mouthGroup.set({
+        visible: false,
+        evented: false
+      });
+      eyesGroup.set({
+        visible: false,
+        evented: false
+      });
+      mouthGroup.sendToBack();
+      eyesGroup.sendToBack();
+    //canvas.remove(mouthGroup);
+    //canvas.remove(eyesGroup);
+//    headGroup.setCoords();
+  //  headGroup.scaleToWidth(375);
+    //headGroup.scaleToHeight(375);
+
+    headGroup.set({
+      // left: canvas.width / 2,
+      // top: 260,
+      originX: 'center',
+      originY: 'bottom',
+      centeredRotation: false  
+    })
+   // headGroup.setCoords();
+    // Render the canvas to update the view
+    canvas.renderAll();
+  });
+}
+
+function getRandomElement(arr) {
+  if (arr.length === 0) {
+    throw new Error('Array is empty');
+  }
+
+  const randomIndex = Math.floor(Math.random() * arr.length);
+  return arr[randomIndex];
+}
+
+let changeMouth = ()=> {
+  let mouth_array = [
+    'mouth_smaller',
+    'mouth_big',
+    'mouth_half_closed',
+    'mouth_round',
+    'mouth_round_small',
+    'mouth_frown_slight',
+  ];
+  let cur_mouth = getRandomElement(mouth_array);
+  
+  console.log('cur_mouth '+cur_mouth)
+
+  fabric.loadSVGFromURL('/_'+cur_mouth+'.svg', function(objects) {
+    console.log(objects)
+    // Find the mouth group
+    var mouthGroup = canvas.getObjects().find(function(object) {
+      return object.id === "group_mouth";
+    });
+    var headGroup = canvas.getObjects().find(function(object) {
+      return object.id === "group_head";
+    }); 
+    mouthGroup.forEachObject(function(obj) {
+      mouthGroup.remove(obj);
+    });
+    for (let obj of objects) {
+      console.log(obj)
+       mouthGroup.addWithUpdate(obj);
+    }
+    mouthGroup.set({
+    left: canvas.width / 2,
+    top: headGroup.height * .85, 
+    originX: 'center',
+    originY: 'center',
+    centeredRotation: false  
+    })
+    // Render the canvas to update the view
+    canvas.renderAll();
+  });
+
+}
 </script>
 
-
+<button on:click={emojiHead}>change mouth</button>
 <br />
 <canvas id="canvas" bind:this={canvas} width={canvasWidth} height={canvasHeight}></canvas>
 
 
 <style>
+
 svg {
      transform: scale(0.5)       translateY(-550px);
 }
