@@ -1,0 +1,261 @@
+{
+  "arm_left": {
+      "paths": [
+          "upper_arm_left_1",
+          "upper_arm_left_2",
+          "upper_arm_left_3",
+          "lower_arm_left_1",
+          "lower_arm_left_2_pinky",
+          "left_3rd_shadow_left",
+          "left_3rd_left",
+          "left_2nd_shadow_left",
+          "left_2nd_left",
+          "left_pointer_shadow_left",
+          "left_pointer_left",
+          "left_thumb_shadow_left",
+          "left_thumb_left"
+      ]
+  },
+  "upper_arm_left": {
+      "paths": [
+          "upper_arm_left_1",
+          "upper_arm_left_2",
+          "upper_arm_left_3",
+          "lower_arm_left_1",
+          "lower_arm_left_2_pinky",
+          "left_3rd_shadow_left",
+          "left_3rd_left",
+          "left_2nd_shadow_left",
+          "left_2nd_left",
+          "left_pointer_shadow_left",
+          "left_pointer_left",
+          "left_thumb_shadow_left",
+          "left_thumb_left"
+      ]
+  },
+  "lower_arm_left": {
+      "paths": [
+          "lower_arm_left_1",
+          "lower_arm_left_2_pinky",
+          "left_3rd_shadow_left",
+          "left_3rd_left",
+          "left_2nd_shadow_left",
+          "left_2nd_left",
+          "left_pointer_shadow_left",
+          "left_pointer_left",
+          "left_thumb_shadow_left",
+          "left_thumb_left"
+      ]
+  },
+  "arm_right": {
+      "paths": [
+          "upper_arm_right_1",
+          "upper_arm_right_2",
+          "upper_arm_right_3",
+          "lower_arm_right_1",
+          "lower_arm_right_pinky",
+          "right_3rd_shadow_right",
+          "right_3rd_right",
+          "right_2nd_shadow_right",
+          "right_2nd_right",
+          "right_pointer_shadow_right",
+          "right_pointer_right",
+          "right_thumb_shadow_right",
+          "right_thumb_right"
+      ]
+  },
+  "upper_arm_right": {
+      "paths": [
+          "upper_arm_right_1",
+          "upper_arm_right_2",
+          "upper_arm_right_3",
+          "lower_arm_right_1",
+          "lower_arm_right_pinky",
+          "right_3rd_shadow_right",
+          "right_3rd_right",
+          "right_2nd_shadow_right",
+          "right_2nd_right",
+          "right_pointer_shadow_right",
+          "right_pointer_right",
+          "right_thumb_shadow_right",
+          "right_thumb_right"
+      ]
+  },
+  "lower_arm_right": {
+      "paths": [
+          "lower_arm_right_1",
+          "lower_arm_right_pinky",
+          "right_3rd_shadow_right",
+          "right_3rd_right",
+          "right_2nd_shadow_right",
+          "right_2nd_right",
+          "right_pointer_shadow_right",
+          "right_pointer_right",
+          "right_thumb_shadow_right",
+          "right_thumb_right"
+      ]
+  },
+  "head_group": {
+      "paths": [
+          "head_1",
+          "head_2",
+          "eye_left",
+          "eye_right",
+          "mouth_smaller_2",
+          "mouth_smaller_3",
+          "mouth_teeth_smaller_1",
+          "mouth_teeth_smaller_2",
+          "mouth_tongue_smaller_1",
+          "mouth_half_closed_1",
+          "mouth_half_closed_2",
+          "mouth_half_closed_3",
+          "mouth_half_closed_4",
+          "mouth_round_1",
+          "mouth_round_2",
+          "mouth_round_small_1",
+          "mouth_big_1",
+          "mouth_big_2",
+          "mouth_big_3",
+          "mouth_big_4",
+          "mouth_big_5",
+          "mouth_frown_slight_1"
+      ]
+  },
+  "mouth_smaller": {
+      "paths": [
+          "mouth_smaller_2",
+          "mouth_smaller_3",
+          "mouth_teeth_smaller_1",
+          "mouth_teeth_smaller_2",
+          "mouth_tongue_smaller_1"
+      ]
+  },
+  "mouth": {
+      "paths": [
+          "mouth_smaller_2",
+          "mouth_smaller_3",
+          "mouth_teeth_smaller_1",
+          "mouth_teeth_smaller_2",
+          "mouth_tongue_smaller_1",
+          "mouth_half_closed_1",
+          "mouth_half_closed_2",
+          "mouth_half_closed_3",
+          "mouth_half_closed_4",
+          "mouth_round_1",
+          "mouth_round_2",
+          "mouth_round_small_1",
+          "mouth_big_1",
+          "mouth_big_2",
+          "mouth_big_3",
+          "mouth_big_4",
+          "mouth_big_5",
+          "mouth_frown_slight_1"
+      ]
+  },
+  "leg_left": {
+      "paths": [
+          "leg_left_1",
+          "leg_left_2",
+          "leg_left_3"
+      ]
+  },
+  "leg_right": {
+      "paths": [
+          "leg_right_1",
+          "leg_right_2",
+          "leg_right_3"
+      ]
+  },
+  "body": {
+      "paths": [
+          "body_1",
+          "body_2"
+      ]
+  },
+  "hand_left": {
+      "paths": [
+          "left_3rd_shadow_left",
+          "left_3rd_left",
+          "left_2nd_shadow_left",
+          "left_2nd_left",
+          "left_pointer_shadow_left",
+          "left_pointer_left",
+          "left_thumb_shadow_left",
+          "left_thumb_left"
+      ]
+  },
+  "hand_right": {
+      "paths": [
+          "right_3rd_shadow_right",
+          "right_3rd_right",
+          "right_2nd_shadow_right",
+          "right_2nd_right",
+          "right_pointer_shadow_right",
+          "right_pointer_right",
+          "right_thumb_shadow_right",
+          "right_thumb_right"
+      ]
+  },
+  "head": {
+      "paths": [
+          "head_1",
+          "head_2"
+      ]
+  },
+  "eyes": {
+      "paths": [
+          "eye_left",
+          "eye_right"
+      ]
+  },
+  "mouth_smaller_1": {
+      "paths": [
+          "mouth_smaller_2",
+          "mouth_smaller_3"
+      ]
+  },
+  "mouth_teeth_smaller": {
+      "paths": [
+          "mouth_teeth_smaller_1",
+          "mouth_teeth_smaller_2"
+      ]
+  },
+  "mouth_tongue_smaller": {
+      "paths": [
+          "mouth_tongue_smaller_1"
+      ]
+  },
+  "mouth_half_closed": {
+      "paths": [
+          "mouth_half_closed_1",
+          "mouth_half_closed_2",
+          "mouth_half_closed_3",
+          "mouth_half_closed_4"
+      ]
+  },
+  "mouth_round": {
+      "paths": [
+          "mouth_round_1",
+          "mouth_round_2"
+      ]
+  },
+  "mouth_round_small": {
+      "paths": [
+          "mouth_round_small_1"
+      ]
+  },
+  "mouth_big": {
+      "paths": [
+          "mouth_big_1",
+          "mouth_big_2",
+          "mouth_big_3",
+          "mouth_big_4",
+          "mouth_big_5"
+      ]
+  },
+  "mouth_frown_slight": {
+      "paths": [
+          "mouth_frown_slight_1"
+      ]
+  }
+}
