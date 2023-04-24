@@ -300,7 +300,7 @@ let selectMyObjects = (ids)=> {
 }
 let emojiHead = () => {
 
-  fabric.loadSVGFromURL('/cold.svg', function(objects) {
+  fabric.loadSVGFromURL('/think2.svg', function(objects) {
     console.log(objects)
     // Find the mouth group
     let num = 0;
@@ -346,8 +346,6 @@ let emojiHead = () => {
         visible: false,
         evented: false
       });
-      mouthGroup.sendToBack();
-      eyesGroup.sendToBack();
     //canvas.remove(mouthGroup);
     //canvas.remove(eyesGroup);
 //    headGroup.setCoords();
