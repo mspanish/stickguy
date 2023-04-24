@@ -96,7 +96,7 @@
   onMount(() => {
 
  canvas = new fabric.Canvas('canvas');
- fabric.Object.prototype.cornerSize = 24;
+ fabric.Object.prototype.cornerSize = 20;
  canvas.preserveObjectStacking = true;
 
  let groups = {}
@@ -105,7 +105,7 @@ fabric.loadSVGFromURL('/stickguy.svg', (objects) => {
   for (let g of stickguy_groups) {
     groups[g] = new fabric.Group()
     groups[g].id = 'group_'+g;
-    groups[g].cornerSize = 24;
+
 
   }
 
@@ -244,7 +244,7 @@ const CustomActiveSelection = fabric.util.createClass(fabric.ActiveSelection, {
           console.log('lowerLeftArm '+lowerLeftArmInSelection)
       options.originX = options.originX || 'right';
       options.originY = options.originY || 'center';
-      options.cornerSize = 24;
+
       options.centeredRotation = false;
     }
 
@@ -257,7 +257,7 @@ const CustomActiveSelection = fabric.util.createClass(fabric.ActiveSelection, {
       options.originX = options.originX || 'left';
       options.originY = options.originY || 'center';
       options.centeredRotation = false;
-      options.cornerSize = 24;
+
     }
 
     this.callSuper('initialize', objects, options);
@@ -284,21 +284,18 @@ let selectMyObjects = (ids)=> {
         element.set({
           originX: 'right',
           originY: 'center',
-          cornerSize: 24,
+ 
           centeredRotation: false,
         });
       } else if (id === 'group_upper_right_arm' || id === 'group_lower_right_arm') {
         element.set({
           originX: 'left',
           originY: 'center',
-          cornerSize: 24,
+       
           centeredRotation: false,
         });
       }
 
-      element.set({
-          cornerSize: 24,
-      })
       
       if (element) arr.push(element);
     }
